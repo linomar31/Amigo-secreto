@@ -13,12 +13,21 @@ function addFriend() {
     // Atualizar o array de amigos
     friends.push(friendName);
 
-    // Adicionar o nome à lista de amigos na interface
-    const friendsList = document.getElementById('friendsList');
-    const listItem = document.createElement('li');
-    listItem.textContent = friendName;
-    friendsList.appendChild(listItem);
+    // Atualizar a lista de amigos na interface
+    atualizarListaAmigos();
 
     // Limpar o campo de entrada
     input.value = '';
+}
+
+function atualizarListaAmigos() {
+    const friendsList = document.getElementById('friendsList');
+    friendsList.innerHTML = ''; // Limpar a lista existente
+
+    for (let friend of friends) {
+        const listItem = document.createElement('li');
+        listItem.textContent = friend;
+        friendsList.appendChild(listItem);
+    }
+}
 }//O principal objetivo deste desafio é fortalecer suas habilidades em lógica de programação. Aqui você deverá desenvolver a lógica para resolver o problema.

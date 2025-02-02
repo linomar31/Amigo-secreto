@@ -1,10 +1,10 @@
-alert ('Atenção! - Clique em sortear apenas quando TODOS os nomes já tiverem sidos inseridos, pois a lista de nomes será ocultada assim que o sorteio começar e não será mais possível verificar os nomes inseridos.')
+alert ('Atenção! - Insira nomes de amigos no campo em branco e em seguida pressionar o botão "Adicionar",
+Após preenchido os nomes dos amigos, pressione o botão "Sortear",
+Finalmente será exibido na tela o nome do amigo sorteado aleatoriamente.')
 
-// Arrays que armazenarão os amigos sorteados.
 let amigos = [];
 let amigosSorteados =[];
 
-//Adiciona um amigo a lista quando o botão "Adicionar" é utilizado
 function adicionarAmigo() {
     let nome = document.getElementById("amigo").value.trim();
     if (!isNaN(nome) || nome === "" || amigos.includes(nome)) {
@@ -22,7 +22,6 @@ function adicionarAmigo() {
     }
 }
 
-//Atualiza a lista com os nomes já inseridos para sorteio
 function atualizarLista() {
     limparLista()
     amigos.forEach(function(amigo) {
@@ -32,7 +31,6 @@ function atualizarLista() {
     });
 }
 
-//Sorteia um nome aleatório dentro do Array de amigos e move esse nome para o array secundário.
 function sortearAmigo() {
     if (amigos.length > 0) {
         limparLista()
@@ -59,7 +57,6 @@ function sortearAmigo() {
     
 }
 
-//Adiciona o botão de retorno caso a pessoa pegue a sí mesma
 
 function retornarAmigos() {
     let sorteado = amigosSorteados.pop();
@@ -74,18 +71,15 @@ function retornarAmigos() {
 
 }
 
-//Altera o texto da line <h2> do HTML de forma dinamica
 function alterarTexto(tag, texto) {
     document.querySelector(tag).innerText = texto;
 }
 
-//Limpa/oculta a lista de nomes exibidas na tela
 function limparLista() {
     let listaAmigos = document.getElementById("listaAmigos");
     listaAmigos.innerHTML = "";
 }
 
-//Limpa o campo de "colocar nome"
 function limparCampo() {
     nomes = document.getElementById("amigo");
     nomes.value = "";

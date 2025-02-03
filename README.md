@@ -16,6 +16,9 @@ ents/assets/bb9a557f-6396-4c0c-b768-4274d7c31c19">
 - Após preenchido os nomes dos amigos o botão "Sortear" deverá ser pressionado
 - Finalmente será exibido na tela o nome do amigo sorteado aleatoriamente
 
+## Experimente no Site
+[Desafio do Amigo Secreto](https://vercel.com/linomar31s-projects/amigo-secreto)
+
 ## Linguagens usadas
 | JavaScript   |
 | CSS        |

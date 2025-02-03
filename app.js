@@ -1,4 +1,4 @@
-alert ('Atenção! - Insira nomes de amigos no campo em branco e em seguida pressionar o botão ADICIONAR; Após preenchido os nomes dos amigos, pressione o botão SORTEAR; Finalmente será exibido na tela o nome do amigo sorteado aleatoriamente.')
+alert ('TUTORIAL - Insira nomes de amigos no campo em branco e em seguida pressionar o botão ADICIONAR; Após preenchido os nomes dos amigos, pressione o botão SORTEAR; Finalmente será exibido na tela o nome do amigo sorteado aleatoriamente.')
 
 let amigos = [];
 let amigosSorteados =[];

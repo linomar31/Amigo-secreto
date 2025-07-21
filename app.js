@@ -1,7 +1,8 @@
-alert ('TUTORIAL - Insira nomes de amigos no campo em branco e em seguida pressionar o botão ADICIONAR; Após preenchido os nomes dos amigos, pressione o botão SORTEAR; Finalmente será exibido na tela o nome do amigo sorteado aleatoriamente.')
+alert('TUTORIAL - Insira nomes de amigos no campo em branco e em seguida pressione o botão ADICIONAR; Após preenchido os nomes dos amigos, pressione o botão SORTEAR; Finalmente será exibido na tela o nome do amigo sorteado aleatoriamente.');
 
 let amigos = [];
-let amigosSorteados =[];
+let amigosSorteados = [];
+let nomeSorteado = null;
 
 function adicionarAmigo() {
     let nome = document.getElementById("amigo").value.trim();
@@ -10,8 +11,7 @@ function adicionarAmigo() {
         limparCampo();
     } else {
         amigos.push(nome);
-        alterarTexto('h2',`Você adicionou ${nome} a sua lista do amigo secreto.`); 
-        console.log(amigos);
+        alterarTexto('h2', `Você adicionou ${nome} à sua lista do amigo secreto.`);
         limparCampo();
         atualizarLista();
     }
@@ -21,7 +21,8 @@ function adicionarAmigo() {
 }
 
 function atualizarLista() {
-    limparLista()
+    let listaAmigos = document.getElementById("listaAmigos");
+    limparLista();
     amigos.forEach(function(amigo) {
         let item = document.createElement("li");
         item.textContent = amigo;
@@ -31,42 +32,38 @@ function atualizarLista() {
 
 function sortearAmigo() {
     if (amigos.length > 0) {
-        limparLista()
+        limparLista();
         let nomeAleatorio = Math.floor(Math.random() * amigos.length);
-        console.log(amigos[nomeAleatorio]);
-        alterarTexto('h2', `O seu amigo secreto é: ${amigos[nomeAleatorio]}.`);
+        let sorteado = amigos[nomeAleatorio];
+        nomeSorteado = sorteado;
+        alterarTexto('h2', `O seu amigo secreto é: ${sorteado}.`);
         setTimeout(function() {
             alterarTexto('h2', 'Clique em "Sortear Amigo" para continuar o sorteio.');
-        }, 3000); // Coloca um intervalo de 3 segundos para que o nome sorteado fique visível.
-        amigosSorteados.push(amigos[nomeAleatorio]);
-        console.log(amigosSorteados);
+        }, 3000);
+        amigosSorteados.push(sorteado);
         amigos.splice(nomeAleatorio, 1);
-        alterarTexto('p','Caso você tire seu próprio nome, clique em "Retornar"')
+        alterarTexto('p', 'Caso você tire seu próprio nome, clique em "Retornar"');
         if (amigosSorteados.length > 0) {
             document.getElementById('retornar').removeAttribute('disabled');
         }
-  
-    } else {
-        document.getElementById('sortear').setAttribute('disabled', true);
-        alterarTexto('h2','Não existem mais nomes possíveis para serem sorteados');
-        alterarTexto('p','')
-  
+        if (amigos.length === 0) {
+            document.getElementById('sortear').setAttribute('disabled', true);
+            alterarTexto('h2', 'Não existem mais nomes possíveis para serem sorteados');
+            alterarTexto('p', '');
+        }
     }
-    
 }
 
-
 function retornarAmigos() {
+    if (amigosSorteados.length === 0) return;
     let sorteado = amigosSorteados.pop();
-    alterarTexto('h2',`Você devolveu o nome ${sorteado} para a lista de amigos disponíveis.`)
-    alterarTexto('p','')
+    alterarTexto('h2', `Você devolveu o nome ${sorteado} para a lista de amigos disponíveis.`);
+    alterarTexto('p', '');
     amigos.push(sorteado);
-    console.log(sorteado);
-    console.log(amigos);
+    atualizarLista();
     if (amigosSorteados.length === 0) {
         document.getElementById('retornar').setAttribute('disabled', true);
     }
-
 }
 
 function alterarTexto(tag, texto) {
@@ -79,22 +76,14 @@ function limparLista() {
 }
 
 function limparCampo() {
-    nomes = document.getElementById("amigo");
+    let nomes = document.getElementById("amigo");
     nomes.value = "";
 }
 
-let nomeSorteado = null; // Armazena o nome sorteado atual
-
-function sortearAmigo() {
-    if (listaAmigos.length === 0) return;
-    const sorteado = listaAmigos[Math.floor(Math.random() * listaAmigos.length)];
-    nomeSorteado = sorteado;
-    resultadoElement.innerHTML = `<li class="nome-sorteado">${sorteado}</li>`;
-}
-
-// Ouve a tecla ESC para remover o nome sorteado da tela
+// ESC para limpar sorteado na tela
 document.addEventListener('keydown', function(event) {
     if (event.key === "Escape" && nomeSorteado) {
+        let resultadoElement = document.getElementById("resultado");
         resultadoElement.innerHTML = "";
         nomeSorteado = null;
     }

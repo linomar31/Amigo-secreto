@@ -83,3 +83,19 @@ function limparCampo() {
     nomes.value = "";
 }
 
+let nomeSorteado = null; // Armazena o nome sorteado atual
+
+function sortearAmigo() {
+    if (listaAmigos.length === 0) return;
+    const sorteado = listaAmigos[Math.floor(Math.random() * listaAmigos.length)];
+    nomeSorteado = sorteado;
+    resultadoElement.innerHTML = `<li class="nome-sorteado">${sorteado}</li>`;
+}
+
+// Ouve a tecla ESC para remover o nome sorteado da tela
+document.addEventListener('keydown', function(event) {
+    if (event.key === "Escape" && nomeSorteado) {
+        resultadoElement.innerHTML = "";
+        nomeSorteado = null;
+    }
+});

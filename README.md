@@ -9,7 +9,7 @@
 - Finalmente será exibido na tela o nome do amigo sorteado aleatoriamente
 
 ## Experimente no Site
-[Desafio do Amigo Secreto](https://vercel.com/linomar31s-projects/amigo-secreto)
+[Desafio do Amigo Secreto](https://amigo-secreto-mu-virid.vercel.app/)
 
 ## Linguagens usadas
 | JavaScript   |

@@ -4,7 +4,7 @@ let nomeSorteado = null; // Stores the currently displayed sorted name
 
 // Display the tutorial message on page load
 document.addEventListener('DOMContentLoaded', () => {
-    alterarTexto('h2', 'TUTORIAL - Insira nomes de amigos no campo em branco e em seguida pressione o botão ADICIONAR ou a tecla ENTER. Após preenchido os nomes dos amigos, pressione o botão SORTEAR. Finalmente, o nome do amigo sorteado aleatoriamente será exibido na tela e permanecerá visível até você pressionar a tecla ESC.');
+    alterarTexto('h2', 'TUTORIAL - Insira nomes de amigos no campo em branco, pressione ADICIONAR ou a tecla ENTER. Após preenchido os nomes, pressione o botão "Sortear amigo". O nome do amigo sorteado permanecerá exibido na tela até você pressionar a tecla ESC. Atualize a página para novo sorteio.');
     document.getElementById('sortear').setAttribute('disabled', true); // Disable sort button initially
     document.getElementById('retornar').setAttribute('disabled', true); // Disable return button initially
 });
